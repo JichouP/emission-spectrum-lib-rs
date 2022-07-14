@@ -1,6 +1,6 @@
-/// c (m/s)
-pub const SPEED_OF_LIGHT: f64 = 299_792_458.0;
-/// h (Js)
-pub const PLANCK_CONSTANT: f64 = 6.62607015e-34;
-/// e (C)
-pub const ELEMENTARY_CHARGE: f64 = 1.60217663e-19;
+/// Speed Of Light (m/s)
+pub const C: f64 = 299_792_458.0;
+/// Planck Constant (Js)
+pub const H: f64 = 6.62607015e-34;
+/// Elementary Charge (C)
+pub const E: f64 = 1.60217663e-19;
