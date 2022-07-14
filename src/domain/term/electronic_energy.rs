@@ -14,11 +14,11 @@ impl ElectronicEnergy {
         Self(value)
     }
 
-    pub fn get(self) -> f64 {
+    pub fn get(&self) -> f64 {
         self.0
     }
 
-    pub fn to_jules(self) -> f64 {
+    pub fn to_jules(&self) -> f64 {
         let t = 100.0 * self.0; // cm^-1 to m^-1
         t * H * C
     }
