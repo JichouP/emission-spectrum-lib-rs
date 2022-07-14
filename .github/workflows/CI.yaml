@@ -25,7 +25,8 @@ jobs:
         with:
           command: check
 
-      - uses: Swatinem/rust-cache@v1
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v1
 
   test:
     name: Test Suite
@@ -46,7 +47,8 @@ jobs:
         with:
           command: test
 
-      - uses: Swatinem/rust-cache@v1
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v1
 
   lints:
     name: Lints
@@ -69,7 +71,8 @@ jobs:
           command: fmt
           args: --all -- --check
 
-      - uses: Swatinem/rust-cache@v1
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v1
 
       # - name: Run cargo clippy
       #   uses: actions-rs/cargo@v1
