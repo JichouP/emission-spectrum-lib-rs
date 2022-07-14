@@ -25,6 +25,8 @@ jobs:
         with:
           command: check
 
+      - uses: Swatinem/rust-cache@v1
+
   test:
     name: Test Suite
     runs-on: ubuntu-latest
@@ -43,6 +45,8 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: test
+
+      - uses: Swatinem/rust-cache@v1
 
   lints:
     name: Lints
@@ -64,6 +68,8 @@ jobs:
         with:
           command: fmt
           args: --all -- --check
+
+      - uses: Swatinem/rust-cache@v1
 
       # - name: Run cargo clippy
       #   uses: actions-rs/cargo@v1
