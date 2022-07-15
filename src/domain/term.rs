@@ -1,3 +1,5 @@
+use std::ops::{Add, Div, Mul, Sub};
+
 use crate::domain::constant::*;
 
 /// Term value
@@ -5,9 +7,14 @@ use crate::domain::constant::*;
 ///
 /// ```
 /// use emission_spectrum_lib_rs::domain::term::Term;
-/// let t = Term::new(1.23);
-/// assert_eq!(t.get(), 1.23)
+/// let t1 = Term::new(1.0);
+/// assert_eq!(t1.get(), 1.0);
+/// let t2 = Term::new(2.0);
+/// assert_eq!(t2.get(), 2.0);
+/// let t3 = t1 + t2;
+/// assert_eq!(t3.get(), 3.0);
 /// ```
+#[derive(Debug, Clone, Copy)]
 pub struct Term(f64);
 
 impl Term {
@@ -15,13 +22,45 @@ impl Term {
         Self(value)
     }
 
-    pub fn get(&self) -> f64 {
+    pub fn get(self) -> f64 {
         self.0
     }
 
-    pub fn to_jules(&self) -> f64 {
+    pub fn to_jules(self) -> f64 {
         let t = 100.0 * self.0; // cm^-1 to m^-1
         t * H * C
+    }
+}
+
+impl Add for Term {
+    type Output = Term;
+
+    fn add(self, rhs: Self) -> Self::Output {
+        Self::new(self.0 + rhs.0)
+    }
+}
+
+impl Sub for Term {
+    type Output = Term;
+
+    fn sub(self, rhs: Self) -> Self::Output {
+        Self::new(self.0 - rhs.0)
+    }
+}
+
+impl Mul for Term {
+    type Output = Term;
+
+    fn mul(self, rhs: Self) -> Self::Output {
+        Self::new(self.0 * rhs.0)
+    }
+}
+
+impl Div for Term {
+    type Output = Term;
+
+    fn div(self, rhs: Self) -> Self::Output {
+        Self::new(self.0 / rhs.0)
     }
 }
 
@@ -31,7 +70,36 @@ mod tests {
 
     #[test]
     fn test() {
-        let t = Term::new(1.23);
-        assert_eq!(t.get(), 1.23);
+        let t = Term::new(1.0);
+        assert_eq!(t.get(), 1.0);
+        assert_eq!(t.to_jules(), 1.9864458571489285e-23);
+    }
+
+    #[test]
+    fn add() {
+        let t1 = Term::new(1.0);
+        let t2 = Term::new(2.0);
+        assert_eq!((t1 + t2).get(), 3.0);
+    }
+
+    #[test]
+    fn sub() {
+        let t1 = Term::new(3.0);
+        let t2 = Term::new(2.0);
+        assert_eq!((t1 - t2).get(), 1.0);
+    }
+
+    #[test]
+    fn mul() {
+        let t1 = Term::new(2.0);
+        let t2 = Term::new(3.0);
+        assert_eq!((t1 * t2).get(), 6.0);
+    }
+
+    #[test]
+    fn div() {
+        let t1 = Term::new(6.0);
+        let t2 = Term::new(3.0);
+        assert_eq!((t1 / t2).get(), 2.0);
     }
 }
