@@ -37,15 +37,9 @@ impl Term {
     }
 }
 
-impl From<f64> for Term {
-    fn from(item: f64) -> Self {
-        Self(item)
-    }
-}
-
-impl Into<f64> for Term {
-    fn into(self) -> f64 {
-        self.0
+impl From<Term> for f64 {
+    fn from(item: Term) -> f64 {
+        item.0
     }
 }
 

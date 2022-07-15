@@ -9,9 +9,9 @@ pub fn vibrational_energy(
 ) -> Term {
     let v: f64 = v.into() + 0.5;
     let we: f64 = we.into();
-    let wexe: f64 = wexe.unwrap_or(Term::new(0.0)).into();
-    let weye: f64 = weye.unwrap_or(Term::new(0.0)).into();
-    let weze: f64 = weze.unwrap_or(Term::new(0.0)).into();
+    let wexe: f64 = wexe.unwrap_or_else(|| Term::new(0.0)).into();
+    let weye: f64 = weye.unwrap_or_else(|| Term::new(0.0)).into();
+    let weze: f64 = weze.unwrap_or_else(|| Term::new(0.0)).into();
     let g: f64 = we * v - wexe * v.powi(2) + weye * v.powi(3) + weze * v.powi(4);
     Term::new(g)
 }
