@@ -30,6 +30,11 @@ impl Term {
         let t = 100.0 * self.0; // cm^-1 to m^-1
         t * H * C
     }
+
+    pub fn to_ev(self) -> f64 {
+        let t = 100.0 * self.0; // cm^-1 to m^-1
+        t * H * C / E
+    }
 }
 
 impl Add for Term {
@@ -73,6 +78,7 @@ mod tests {
         let t = Term::new(1.0);
         assert_eq!(t.get(), 1.0);
         assert_eq!(t.to_jules(), 1.9864458571489285e-23);
+        assert_eq!(t.to_ev(), 0.00012398419874273966);
     }
 
     #[test]
