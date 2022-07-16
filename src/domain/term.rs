@@ -3,7 +3,7 @@ use std::ops::{Add, Div, Mul, Sub};
 use crate::domain::constant::*;
 
 /// Term value
-/// * `0` - `T`: Term (cm^-1)
+/// * `0` - `T`: Term (`cm^-1`)
 ///
 /// ```
 /// use emission_spectrum_lib_rs::domain::term::Term;
