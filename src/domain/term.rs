@@ -20,19 +20,59 @@ use crate::domain::constant::*;
 pub struct Term(f64);
 
 impl Term {
+    /// Returns the new term
+    ///
+    /// # Arguments
+    ///
+    /// * `value` - `f64`
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use emission_spectrum_lib_rs::domain::term::Term;
+    /// let t = Term::new(1.0);
+    /// assert_eq!(t.unwrap(), 1.0);
+    /// ```
     pub fn new(value: f64) -> Self {
         Self(value)
     }
 
+    /// Returns the value
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use emission_spectrum_lib_rs::domain::term::Term;
+    /// let t = Term::new(1.0);
+    /// assert_eq!(t.unwrap(), 1.0);
+    /// ```
     pub fn unwrap(self) -> f64 {
         self.0
     }
 
+    /// Return the value converted to joules
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use emission_spectrum_lib_rs::domain::term::Term;
+    /// let t = Term::new(1.0);
+    /// assert_eq!(t.to_jules(), 1.9864458571489285e-23);
+    /// ```
     pub fn to_jules(self) -> f64 {
         let t = 100.0 * self.0; // cm^-1 to m^-1
         t * H * C
     }
 
+    /// Return the value converted to eV
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use emission_spectrum_lib_rs::domain::term::Term;
+    /// let t = Term::new(1.0);
+    /// assert_eq!(t.to_ev(), 0.00012398419874273966);
+    /// ```
     pub fn to_ev(self) -> f64 {
         let t = 100.0 * self.0; // cm^-1 to m^-1
         t * H * C / E
