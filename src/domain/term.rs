@@ -10,11 +10,11 @@ use crate::domain::constant::*;
 /// ```
 /// use emission_spectrum_lib_rs::domain::term::Term;
 /// let t1 = Term::new(1.0);
-/// assert_eq!(t1.get(), 1.0);
+/// assert_eq!(t1.unwrap(), 1.0);
 /// let t2 = Term::new(2.0);
-/// assert_eq!(t2.get(), 2.0);
+/// assert_eq!(t2.unwrap(), 2.0);
 /// let t3 = t1 + t2;
-/// assert_eq!(t3.get(), 3.0);
+/// assert_eq!(t3.unwrap(), 3.0);
 /// ```
 #[derive(Debug, Clone, Copy)]
 pub struct Term(f64);
@@ -24,7 +24,7 @@ impl Term {
         Self(value)
     }
 
-    pub fn get(self) -> f64 {
+    pub fn unwrap(self) -> f64 {
         self.0
     }
 
@@ -84,7 +84,7 @@ mod tests {
     #[test]
     fn test() {
         let t = Term::new(1.0);
-        assert_eq!(t.get(), 1.0);
+        assert_eq!(t.unwrap(), 1.0);
         assert_eq!(t.to_jules(), 1.9864458571489285e-23);
         assert_eq!(t.to_ev(), 0.00012398419874273966);
     }
@@ -93,27 +93,27 @@ mod tests {
     fn add() {
         let t1 = Term::new(1.0);
         let t2 = Term::new(2.0);
-        assert_eq!((t1 + t2).get(), 3.0);
+        assert_eq!((t1 + t2).unwrap(), 3.0);
     }
 
     #[test]
     fn sub() {
         let t1 = Term::new(3.0);
         let t2 = Term::new(2.0);
-        assert_eq!((t1 - t2).get(), 1.0);
+        assert_eq!((t1 - t2).unwrap(), 1.0);
     }
 
     #[test]
     fn mul() {
         let t1 = Term::new(2.0);
         let t2 = Term::new(3.0);
-        assert_eq!((t1 * t2).get(), 6.0);
+        assert_eq!((t1 * t2).unwrap(), 6.0);
     }
 
     #[test]
     fn div() {
         let t1 = Term::new(6.0);
         let t2 = Term::new(3.0);
-        assert_eq!((t1 / t2).get(), 2.0);
+        assert_eq!((t1 / t2).unwrap(), 2.0);
     }
 }

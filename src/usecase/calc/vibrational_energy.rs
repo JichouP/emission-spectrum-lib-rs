@@ -21,7 +21,7 @@ use crate::domain::term::Term;
 ///     Some(Term::new(3.0)),
 ///     None,
 /// );
-/// assert_eq!(g.get(), 7.125);
+/// assert_eq!(g.unwrap(), 7.125);
 /// ```
 pub fn vibrational_energy(
     v: impl Into<f64>,
@@ -54,6 +54,6 @@ mod tests {
             Some(Term::new(3.0)),
             None,
         );
-        assert_eq!(g.get(), 7.125);
+        assert_eq!(g.unwrap(), 7.125);
     }
 }
