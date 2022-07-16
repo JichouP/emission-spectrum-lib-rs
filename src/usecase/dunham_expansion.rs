@@ -67,4 +67,18 @@ mod tests {
         let e = DunhamExpansion::new(1.0, 0.0, vec![vec![0.0, 1.0, -2.0, 3.0, 0.0]]);
         assert_eq!(e.eval(), 7.125);
     }
+
+    #[test]
+    fn it_works_with_cf() {
+        let y = DunhamExpansion::new(
+            0.0,
+            0.0,
+            vec![
+                vec![0.0, 1308.1, -11.1, 0.093],
+                vec![1.4172, -0.0184, 0.00011],
+                vec![6.5e-6],
+            ],
+        );
+        assert_eq!(y.eval(), 651.286625);
+    }
 }
