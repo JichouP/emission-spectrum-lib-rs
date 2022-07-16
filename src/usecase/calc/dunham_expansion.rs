@@ -54,7 +54,7 @@ impl DunhamExpansion {
                     .collect()
             })
             .collect();
-        res.concat().iter().fold(0.0, |sum, &v| sum + v)
+        res.concat().iter().sum()
     }
 }
 
