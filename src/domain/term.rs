@@ -8,7 +8,7 @@ use crate::domain::constant::*;
 /// # Examples
 ///
 /// ```
-/// use emission_spectrum_lib_rs::domain::term::Term;
+/// use emission_spectrum_lib_rs::prelude::Term;
 /// let t1 = Term::new(1.0);
 /// assert_eq!(t1.unwrap(), 1.0);
 /// let t2 = Term::new(2.0);
@@ -29,7 +29,7 @@ impl Term {
     /// # Examples
     ///
     /// ```
-    /// use emission_spectrum_lib_rs::domain::term::Term;
+    /// use emission_spectrum_lib_rs::prelude::Term;
     /// let t = Term::new(1.0);
     /// assert_eq!(t.unwrap(), 1.0);
     /// ```
@@ -42,7 +42,7 @@ impl Term {
     /// # Examples
     ///
     /// ```
-    /// use emission_spectrum_lib_rs::domain::term::Term;
+    /// use emission_spectrum_lib_rs::prelude::Term;
     /// let t = Term::new(1.0);
     /// assert_eq!(t.unwrap(), 1.0);
     /// ```
@@ -55,7 +55,7 @@ impl Term {
     /// # Examples
     ///
     /// ```
-    /// use emission_spectrum_lib_rs::domain::term::Term;
+    /// use emission_spectrum_lib_rs::prelude::Term;
     /// let t = Term::new(1.0);
     /// assert_eq!(t.to_jules(), 1.9864458571489285e-23);
     /// ```
@@ -69,7 +69,7 @@ impl Term {
     /// # Examples
     ///
     /// ```
-    /// use emission_spectrum_lib_rs::domain::term::Term;
+    /// use emission_spectrum_lib_rs::prelude::Term;
     /// let t = Term::new(1.0);
     /// assert_eq!(t.to_ev(), 0.00012398419874273966);
     /// ```
