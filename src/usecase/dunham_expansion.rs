@@ -34,7 +34,7 @@ impl DunhamExpansion {
     /// # Examples
     ///
     /// ```
-    /// use emission_spectrum_lib_rs::usecase::calc::dunham_expansion::DunhamExpansion;
+    /// use emission_spectrum_lib_rs::usecase::dunham_expansion::DunhamExpansion;
     /// fn test() {
     /// let e = DunhamExpansion::new(1.0, 0.0, vec![vec![0.0, 1.0, -2.0, 3.0, 0.0]]);
     /// assert_eq!(e.eval(), 7.125);
