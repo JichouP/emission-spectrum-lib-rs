@@ -5,6 +5,8 @@ use crate::domain::constant::*;
 /// Term value
 /// * `0` - `T`: Term (`cm^-1`)
 ///
+/// # Examples
+///
 /// ```
 /// use emission_spectrum_lib_rs::domain::term::Term;
 /// let t1 = Term::new(1.0);
