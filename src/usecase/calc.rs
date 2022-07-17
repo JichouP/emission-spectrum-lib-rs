@@ -2,7 +2,7 @@ use crate::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct CalcConfig {
-    spin_quantum: SpinQuantumNumber,
+    spin_quantum: SpinQuantumNumberKind,
 }
 
 pub fn calc(config: CalcConfig) -> Vec<(f64, f64)> {

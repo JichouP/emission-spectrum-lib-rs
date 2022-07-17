@@ -1,5 +1,5 @@
 #[derive(Debug, Clone)]
-pub enum SpinQuantumNumber {
+pub enum SpinQuantumNumberKind {
     Singlet,
     Doublet,
     Triplet,
