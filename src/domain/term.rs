@@ -37,7 +37,7 @@ impl Term {
         Self(value)
     }
 
-    /// Returns the value
+    /// Returns the value, consume self
     ///
     /// # Examples
     ///
@@ -59,7 +59,7 @@ impl Term {
     /// let t = Term::new(1.0);
     /// assert_eq!(t.to_jules(), 1.9864458571489285e-23);
     /// ```
-    pub fn to_jules(self) -> f64 {
+    pub fn to_jules(&self) -> f64 {
         let t = 100.0 * self.0; // cm^-1 to m^-1
         t * H * C
     }
@@ -73,9 +73,23 @@ impl Term {
     /// let t = Term::new(1.0);
     /// assert_eq!(t.to_ev(), 0.00012398419874273966);
     /// ```
-    pub fn to_ev(self) -> f64 {
+    pub fn to_ev(&self) -> f64 {
         let t = 100.0 * self.0; // cm^-1 to m^-1
         t * H * C / E
+    }
+
+    /// Return the value converted to wave length (m)
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use emission_spectrum_lib_rs::prelude::Term;
+    /// let t1 = Term::new(1.0);
+    /// let t2 = Term::new(2.0);
+    /// assert_eq!(t2.to_wave_length(&t1), 0.01);
+    /// ```
+    pub fn to_wave_length(&self, t2: &Term) -> f64 {
+        0.01 / (self.0 - t2.0).abs() // (m/cm)/cm^-1 = m
     }
 }
 
@@ -123,10 +137,13 @@ mod tests {
 
     #[test]
     fn test() {
-        let t = Term::new(1.0);
-        assert_eq!(t.unwrap(), 1.0);
-        assert_eq!(t.to_jules(), 1.9864458571489285e-23);
-        assert_eq!(t.to_ev(), 0.00012398419874273966);
+        let t1 = Term::new(1.0);
+        let t2 = Term::new(2.0);
+        assert_eq!(t1.unwrap(), 1.0);
+        assert_eq!(t1.to_jules(), 1.9864458571489285e-23);
+        assert_eq!(t1.to_ev(), 0.00012398419874273966);
+        assert_eq!(t2.to_wave_length(&t1), 0.01);
+        assert_eq!(t1.to_wave_length(&t2), 0.01);
     }
 
     #[test]
