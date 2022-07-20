@@ -103,7 +103,7 @@ impl HonlLondonFactorImpl for HonlLondonFactor {
 }
 
 #[cfg(test)]
-pub mod tests {
+mod tests {
     use std::f64::{INFINITY, NAN};
 
     use crate::{

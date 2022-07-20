@@ -36,7 +36,7 @@ pub enum TripletBranchKind {
 }
 
 #[cfg(test)]
-pub mod tests {
+mod tests {
     use super::{DoubletBranchKind, SpinQuantumNumberKind};
 
     #[test]

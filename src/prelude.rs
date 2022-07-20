@@ -5,4 +5,6 @@ pub use crate::domain::{
     },
     term::Term,
 };
-pub use crate::usecase::{dunham_expansion::DunhamExpansion, gaussian::Gaussian};
+pub use crate::usecase::{
+    dunham_expansion::DunhamExpansion, gaussian::Gaussian, honl_london_factor::*,
+};

@@ -43,7 +43,7 @@ impl Gaussian {
 }
 
 #[cfg(test)]
-pub mod tests {
+mod tests {
     use crate::prelude::Gaussian;
 
     #[test]
