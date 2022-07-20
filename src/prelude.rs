@@ -3,5 +3,5 @@ pub use crate::domain::{
     TripletBranchKind::{self, *},
 };
 pub use crate::usecase::{
-    dunham_expansion::DunhamExpansion, gaussian::Gaussian, honl_london_factor::*,
+    calc::*, dunham_expansion::DunhamExpansion, gaussian::Gaussian, honl_london_factor::*,
 };

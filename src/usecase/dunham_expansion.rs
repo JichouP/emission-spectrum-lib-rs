@@ -1,3 +1,5 @@
+use crate::prelude::Term;
+
 type Params = Vec<Vec<f64>>;
 
 /// Dunham Expansion
@@ -37,10 +39,10 @@ impl DunhamExpansion {
     /// use emission_spectrum_lib_rs::prelude::DunhamExpansion;
     /// fn test() {
     /// let e = DunhamExpansion::new(1.0, 0.0, vec![vec![0.0, 1.0, -2.0, 3.0, 0.0]]);
-    /// assert_eq!(e.eval(), 7.125);
+    /// assert_eq!(e.eval().unwrap(), 7.125);
     /// }
     /// ```
-    pub fn eval(self) -> f64 {
+    pub fn eval(self) -> Term {
         let v = self.v + 0.5; // v+1/2
         let j = self.j * (self.j + 1.0); // J(J+1)
         let res: Params = self
@@ -54,7 +56,7 @@ impl DunhamExpansion {
                     .collect()
             })
             .collect();
-        res.concat().iter().sum()
+        Term::new(res.concat().iter().sum())
     }
 }
 
@@ -65,7 +67,7 @@ mod tests {
     #[test]
     fn test() {
         let e = DunhamExpansion::new(1.0, 0.0, vec![vec![0.0, 1.0, -2.0, 3.0, 0.0]]);
-        assert_eq!(e.eval(), 7.125);
+        assert_eq!(e.eval().unwrap(), 7.125);
     }
 
     #[test]
@@ -79,6 +81,6 @@ mod tests {
                 vec![6.5e-6],
             ],
         );
-        assert_eq!(y.eval(), 651.286625);
+        assert_eq!(y.eval().unwrap(), 651.286625);
     }
 }

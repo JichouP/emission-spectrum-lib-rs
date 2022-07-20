@@ -7,15 +7,15 @@ use crate::prelude::{
 #[derive(Debug, Clone)]
 pub struct HonlLondonFactor {
     /// `J'`: Quantum number of rotation
-    j: f64,
+    pub j: f64,
     /// `Λ'`: Electronic state
-    lu: f64,
+    pub lu: f64,
     /// `Λ''`: Electronic state
-    ll: f64,
+    pub ll: f64,
     /// `γ`: Rotation-vibration interaction constant
-    r: f64,
-    coupling_kind: CouplingKind,
-    branch_kind: DoubletBranchKind,
+    pub r: f64,
+    pub coupling_kind: CouplingKind,
+    pub branch_kind: DoubletBranchKind,
 }
 
 impl HonlLondonFactorImpl for HonlLondonFactor {
