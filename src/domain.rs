@@ -1,4 +1,10 @@
+mod branch_kind;
 pub mod constant;
-pub mod coupling_kind;
-pub mod spin_quantum_number;
-pub mod term;
+mod coupling_kind;
+mod spin_quantum_number;
+mod term;
+
+pub use branch_kind::*;
+pub use coupling_kind::CouplingKind;
+pub use spin_quantum_number::SpinQuantumNumberKind;
+pub use term::Term;

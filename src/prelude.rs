@@ -1,9 +1,6 @@
 pub use crate::domain::{
-    coupling_kind::CouplingKind,
-    spin_quantum_number::{
-        DoubletBranchKind, SingletBranchKind, SpinQuantumNumberKind, TripletBranchKind,
-    },
-    term::Term,
+    CouplingKind, DoubletBranchKind, SingletBranchKind, SpinQuantumNumberKind, Term,
+    TripletBranchKind::{self, *},
 };
 pub use crate::usecase::{
     dunham_expansion::DunhamExpansion, gaussian::Gaussian, honl_london_factor::*,
