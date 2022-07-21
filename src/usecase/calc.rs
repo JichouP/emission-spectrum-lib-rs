@@ -56,7 +56,7 @@ impl Calc {
         let res: Vec<f64> = match self.spin_quantum_number_kind {
             SpinQuantumNumberKind::Singlet => unimplemented!(),
             SpinQuantumNumberKind::Doublet => {
-                let res: Vec<Vec<f64>> = self
+                let res: Vec<f64> = self
                     .q
                     .into_iter()
                     .map(|(vl_u, vl_l, q)| {
@@ -80,12 +80,12 @@ impl Calc {
                         // let i_v_l =
                         //     q * ((-1.0 * e_v_l.unwrap() * H * C) / (E * self.t_v.unwrap())).exp();
 
-                        let res: Vec<Vec<f64>> = self
+                        let res: Vec<f64> = self
                             .spin_configs
                             .clone()
                             .into_iter()
                             .map(|(coupling_kind, branch_kind, j)| {
-                                let res: Vec<Vec<f64>> = j
+                                let res: Vec<f64> = j
                                     .into_iter()
                                     .map(|j| {
                                         let mut params_u = self.dunham_expression_params_u.clone();
@@ -134,10 +134,6 @@ impl Calc {
 
                                         res
                                     })
-                                    .collect();
-
-                                let res: Vec<f64> = res
-                                    .into_iter()
                                     .reduce(|accum, item| {
                                         accum
                                             .into_iter()
@@ -149,10 +145,6 @@ impl Calc {
 
                                 res
                             })
-                            .collect();
-
-                        let res: Vec<f64> = res
-                            .into_iter()
                             .reduce(|accum, item| {
                                 accum
                                     .into_iter()
@@ -164,10 +156,6 @@ impl Calc {
 
                         res
                     })
-                    .collect();
-
-                let res: Vec<f64> = res
-                    .into_iter()
                     .reduce(|accum, item| {
                         accum
                             .into_iter()

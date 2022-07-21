@@ -16,32 +16,38 @@ mod tests {
             (
                 CouplingKind::B,
                 DoubletBranchKind::P1,
-                (1..46).map(|v| v as f64 + 0.5).collect(),
+                (6..21).map(|v| v as f64 + 0.5).collect(),
+                // (1..12).map(|v| v as f64 + 0.5).collect(),
             ),
             (
                 CouplingKind::B,
                 DoubletBranchKind::P2,
-                (3..46).map(|v| v as f64 + 0.5).collect(),
+                (6..21).map(|v| v as f64 + 0.5).collect(),
+                // (3..12).map(|v| v as f64 + 0.5).collect(),
             ),
             (
                 CouplingKind::B,
                 DoubletBranchKind::Q1,
-                (0..46).map(|v| v as f64 + 0.5).collect(),
+                (2..26).map(|v| v as f64 + 0.5).collect(),
+                // (0..12).map(|v| v as f64 + 0.5).collect(),
             ),
             (
                 CouplingKind::B,
                 DoubletBranchKind::Q2,
-                (2..46).map(|v| v as f64 + 0.5).collect(),
+                (4..25).map(|v| v as f64 + 0.5).collect(),
+                // (2..12).map(|v| v as f64 + 0.5).collect(),
             ),
             (
                 CouplingKind::B,
                 DoubletBranchKind::R1,
-                (1..46).map(|v| v as f64 + 0.5).collect(),
+                (1..26).map(|v| v as f64 + 0.5).collect(),
+                // (1..12).map(|v| v as f64 + 0.5).collect(),
             ),
             (
                 CouplingKind::B,
                 DoubletBranchKind::R2,
-                (1..46).map(|v| v as f64 + 0.5).collect(),
+                (3..26).map(|v| v as f64 + 0.5).collect(),
+                // (1..12).map(|v| v as f64 + 0.5).collect(),
             ),
         ];
 
@@ -70,11 +76,15 @@ mod tests {
             .into_iter()
             .map(|v| (v as f64) * 0.1e-11 + 200e-9)
             .collect();
+        // let wave_lengths: Vec<f64> = (0..20000)
+        //     .into_iter()
+        //     .map(|v| (v as f64) * 0.1e-12 + 202e-9)
+        //     .collect();
 
         let c = Calc {
             dunham_expression_params_u,
             dunham_expression_params_l,
-            fwhm: 3.0e-10,
+            fwhm: 5.0e-10,
             lu: 2.0,
             ll: 1.0,
             q,
@@ -83,8 +93,8 @@ mod tests {
             spin_quantum_number_kind: SpinQuantumNumberKind::Doublet,
             t_e_u: Term::new(49399.6),
             t_e_l: Term::new(0.0),
-            t_r: Term::new(0.005),
-            t_v: Term::new(0.1),
+            t_r: Term::new(0.1189),
+            t_v: Term::new(0.2120),
             wave_lengths: wave_lengths.clone(),
         };
 
